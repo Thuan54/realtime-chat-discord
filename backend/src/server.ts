@@ -1,12 +1,12 @@
 import express from "express"
+import auth from "./auth/route.js"
 
 const app = express()
 
-app.get('/', (req,res) => {
-    res.send("Hello")
-})
+app.use(express.json())
+app.use(auth)
 
-const port = 3000
+const port = process.env.PORT || 3000
 
 app.listen(port, err => {
     if (err) {
